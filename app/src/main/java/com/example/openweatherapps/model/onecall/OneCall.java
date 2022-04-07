@@ -28,9 +28,15 @@ public class OneCall implements Parcelable
     @SerializedName("current")
     @Expose
     private Current current;
+    @SerializedName("minutely")
+    @Expose
+    private List<Minutely> minutely = null;
     @SerializedName("hourly")
     @Expose
     private List<Hourly> hourly = null;
+    @SerializedName("daily")
+    @Expose
+    private List<Daily> daily = null;
     public final static Creator<OneCall> CREATOR = new Creator<OneCall>() {
 
 
@@ -54,7 +60,9 @@ public class OneCall implements Parcelable
         this.timezone = ((String) in.readValue((String.class.getClassLoader())));
         this.timezoneOffset = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.current = ((Current) in.readValue((Current.class.getClassLoader())));
+        in.readList(this.minutely, (com.example.openweatherapps.model.onecall.Minutely.class.getClassLoader()));
         in.readList(this.hourly, (com.example.openweatherapps.model.onecall.Hourly.class.getClassLoader()));
+        in.readList(this.daily, (com.example.openweatherapps.model.onecall.Daily.class.getClassLoader()));
     }
 
     /**
@@ -69,18 +77,22 @@ public class OneCall implements Parcelable
      * @param current
      * @param timezoneOffset
      * @param timezone
+     * @param daily
      * @param lon
      * @param hourly
+     * @param minutely
      * @param lat
      */
-    public OneCall(Double lat, Double lon, String timezone, Integer timezoneOffset, Current current, List<Hourly> hourly) {
+    public OneCall(Double lat, Double lon, String timezone, Integer timezoneOffset, Current current, List<Minutely> minutely, List<Hourly> hourly, List<Daily> daily) {
         super();
         this.lat = lat;
         this.lon = lon;
         this.timezone = timezone;
         this.timezoneOffset = timezoneOffset;
         this.current = current;
+        this.minutely = minutely;
         this.hourly = hourly;
+        this.daily = daily;
     }
 
     public Double getLat() {
@@ -123,12 +135,28 @@ public class OneCall implements Parcelable
         this.current = current;
     }
 
+    public List<Minutely> getMinutely() {
+        return minutely;
+    }
+
+    public void setMinutely(List<Minutely> minutely) {
+        this.minutely = minutely;
+    }
+
     public List<Hourly> getHourly() {
         return hourly;
     }
 
     public void setHourly(List<Hourly> hourly) {
         this.hourly = hourly;
+    }
+
+    public List<Daily> getDaily() {
+        return daily;
+    }
+
+    public void setDaily(List<Daily> daily) {
+        this.daily = daily;
     }
 
     @Override
@@ -155,9 +183,17 @@ public class OneCall implements Parcelable
         sb.append('=');
         sb.append(((this.current == null)?"<null>":this.current));
         sb.append(',');
+        sb.append("minutely");
+        sb.append('=');
+        sb.append(((this.minutely == null)?"<null>":this.minutely));
+        sb.append(',');
         sb.append("hourly");
         sb.append('=');
         sb.append(((this.hourly == null)?"<null>":this.hourly));
+        sb.append(',');
+        sb.append("daily");
+        sb.append('=');
+        sb.append(((this.daily == null)?"<null>":this.daily));
         sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
@@ -173,7 +209,9 @@ public class OneCall implements Parcelable
         dest.writeValue(timezone);
         dest.writeValue(timezoneOffset);
         dest.writeValue(current);
+        dest.writeList(minutely);
         dest.writeList(hourly);
+        dest.writeList(daily);
     }
 
     public int describeContents() {

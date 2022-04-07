@@ -10,7 +10,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("jsonschema2pojo")
-public class Current implements Parcelable
+public class Daily implements Parcelable
 {
 
     @SerializedName("dt")
@@ -22,12 +22,21 @@ public class Current implements Parcelable
     @SerializedName("sunset")
     @Expose
     private Integer sunset;
+    @SerializedName("moonrise")
+    @Expose
+    private Integer moonrise;
+    @SerializedName("moonset")
+    @Expose
+    private Integer moonset;
+    @SerializedName("moon_phase")
+    @Expose
+    private Double moonPhase;
     @SerializedName("temp")
     @Expose
-    private Double temp;
+    private Temp temp;
     @SerializedName("feels_like")
     @Expose
-    private Double feelsLike;
+    private FeelsLike feelsLike;
     @SerializedName("pressure")
     @Expose
     private Integer pressure;
@@ -37,15 +46,6 @@ public class Current implements Parcelable
     @SerializedName("dew_point")
     @Expose
     private Double dewPoint;
-    @SerializedName("uvi")
-    @Expose
-    private Double uvi;
-    @SerializedName("clouds")
-    @Expose
-    private Integer clouds;
-    @SerializedName("visibility")
-    @Expose
-    private Integer visibility;
     @SerializedName("wind_speed")
     @Expose
     private Double windSpeed;
@@ -57,84 +57,114 @@ public class Current implements Parcelable
     private Double windGust;
     @SerializedName("weather")
     @Expose
-    private List<Weather> weather = null;
-    public final static Creator<Current> CREATOR = new Creator<Current>() {
+    private List<Weather__2> weather = null;
+    @SerializedName("clouds")
+    @Expose
+    private Integer clouds;
+    @SerializedName("pop")
+    @Expose
+    private Integer pop;
+    @SerializedName("uvi")
+    @Expose
+    private Integer uvi;
+    @SerializedName("rain")
+    @Expose
+    private Double rain;
+    @SerializedName("snow")
+    @Expose
+    private Double snow;
+    public final static Creator<Daily> CREATOR = new Creator<Daily>() {
 
 
         @SuppressWarnings({
             "unchecked"
         })
-        public Current createFromParcel(android.os.Parcel in) {
-            return new Current(in);
+        public Daily createFromParcel(android.os.Parcel in) {
+            return new Daily(in);
         }
 
-        public Current[] newArray(int size) {
-            return (new Current[size]);
+        public Daily[] newArray(int size) {
+            return (new Daily[size]);
         }
 
     }
     ;
 
-    protected Current(android.os.Parcel in) {
+    protected Daily(android.os.Parcel in) {
         this.dt = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.sunrise = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.sunset = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        this.temp = ((Double) in.readValue((Double.class.getClassLoader())));
-        this.feelsLike = ((Double) in.readValue((Double.class.getClassLoader())));
+        this.moonrise = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.moonset = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.moonPhase = ((Double) in.readValue((Double.class.getClassLoader())));
+        this.temp = ((Temp) in.readValue((Temp.class.getClassLoader())));
+        this.feelsLike = ((FeelsLike) in.readValue((FeelsLike.class.getClassLoader())));
         this.pressure = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.humidity = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.dewPoint = ((Double) in.readValue((Double.class.getClassLoader())));
-        this.uvi = ((Double) in.readValue((Double.class.getClassLoader())));
-        this.clouds = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        this.visibility = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.windSpeed = ((Double) in.readValue((Double.class.getClassLoader())));
         this.windDeg = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.windGust = ((Double) in.readValue((Double.class.getClassLoader())));
-        in.readList(this.weather, (com.example.openweatherapps.model.onecall.Weather.class.getClassLoader()));
+        in.readList(this.weather, (com.example.openweatherapps.model.onecall.Weather__2.class.getClassLoader()));
+        this.clouds = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.pop = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.uvi = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.rain = ((Double) in.readValue((Double.class.getClassLoader())));
+        this.snow = ((Double) in.readValue((Double.class.getClassLoader())));
     }
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public Current() {
+    public Daily() {
     }
 
     /**
      * 
+     * @param moonset
+     * @param rain
      * @param sunrise
      * @param temp
-     * @param visibility
      * @param windGust
      * @param uvi
+     * @param moonrise
      * @param pressure
      * @param clouds
      * @param dewPoint
      * @param dt
      * @param feelsLike
      * @param windDeg
+     * @param pop
+     * @param snow
      * @param sunset
      * @param weather
      * @param humidity
+     * @param moonPhase
      * @param windSpeed
      */
-    public Current(Integer dt, Integer sunrise, Integer sunset, Double temp, Double feelsLike, Integer pressure, Integer humidity, Double dewPoint, Double uvi, Integer clouds, Integer visibility, Double windSpeed, Integer windDeg, Double windGust, List<Weather> weather) {
+    public Daily(Integer dt, Integer sunrise, Integer sunset, Integer moonrise, Integer moonset, Double moonPhase, Temp temp, FeelsLike feelsLike, Integer pressure, Integer humidity, Double dewPoint, Double windSpeed, Integer windDeg, Double windGust, List<Weather__2> weather, Integer clouds, Integer pop, Integer uvi, Double rain, Double snow) {
         super();
         this.dt = dt;
         this.sunrise = sunrise;
         this.sunset = sunset;
+        this.moonrise = moonrise;
+        this.moonset = moonset;
+        this.moonPhase = moonPhase;
         this.temp = temp;
         this.feelsLike = feelsLike;
         this.pressure = pressure;
         this.humidity = humidity;
         this.dewPoint = dewPoint;
-        this.uvi = uvi;
-        this.clouds = clouds;
-        this.visibility = visibility;
         this.windSpeed = windSpeed;
         this.windDeg = windDeg;
         this.windGust = windGust;
         this.weather = weather;
+        this.clouds = clouds;
+        this.pop = pop;
+        this.uvi = uvi;
+        this.rain = rain;
+        this.snow = snow;
     }
 
     public Integer getDt() {
@@ -161,19 +191,43 @@ public class Current implements Parcelable
         this.sunset = sunset;
     }
 
-    public Double getTemp() {
+    public Integer getMoonrise() {
+        return moonrise;
+    }
+
+    public void setMoonrise(Integer moonrise) {
+        this.moonrise = moonrise;
+    }
+
+    public Integer getMoonset() {
+        return moonset;
+    }
+
+    public void setMoonset(Integer moonset) {
+        this.moonset = moonset;
+    }
+
+    public Double getMoonPhase() {
+        return moonPhase;
+    }
+
+    public void setMoonPhase(Double moonPhase) {
+        this.moonPhase = moonPhase;
+    }
+
+    public Temp getTemp() {
         return temp;
     }
 
-    public void setTemp(Double temp) {
+    public void setTemp(Temp temp) {
         this.temp = temp;
     }
 
-    public Double getFeelsLike() {
+    public FeelsLike getFeelsLike() {
         return feelsLike;
     }
 
-    public void setFeelsLike(Double feelsLike) {
+    public void setFeelsLike(FeelsLike feelsLike) {
         this.feelsLike = feelsLike;
     }
 
@@ -201,30 +255,6 @@ public class Current implements Parcelable
         this.dewPoint = dewPoint;
     }
 
-    public Double getUvi() {
-        return uvi;
-    }
-
-    public void setUvi(Double uvi) {
-        this.uvi = uvi;
-    }
-
-    public Integer getClouds() {
-        return clouds;
-    }
-
-    public void setClouds(Integer clouds) {
-        this.clouds = clouds;
-    }
-
-    public Integer getVisibility() {
-        return visibility;
-    }
-
-    public void setVisibility(Integer visibility) {
-        this.visibility = visibility;
-    }
-
     public Double getWindSpeed() {
         return windSpeed;
     }
@@ -249,18 +279,58 @@ public class Current implements Parcelable
         this.windGust = windGust;
     }
 
-    public List<Weather> getWeather() {
+    public List<Weather__2> getWeather() {
         return weather;
     }
 
-    public void setWeather(List<Weather> weather) {
+    public void setWeather(List<Weather__2> weather) {
         this.weather = weather;
+    }
+
+    public Integer getClouds() {
+        return clouds;
+    }
+
+    public void setClouds(Integer clouds) {
+        this.clouds = clouds;
+    }
+
+    public Integer getPop() {
+        return pop;
+    }
+
+    public void setPop(Integer pop) {
+        this.pop = pop;
+    }
+
+    public Integer getUvi() {
+        return uvi;
+    }
+
+    public void setUvi(Integer uvi) {
+        this.uvi = uvi;
+    }
+
+    public Double getRain() {
+        return rain;
+    }
+
+    public void setRain(Double rain) {
+        this.rain = rain;
+    }
+
+    public Double getSnow() {
+        return snow;
+    }
+
+    public void setSnow(Double snow) {
+        this.snow = snow;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Current.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(Daily.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("dt");
         sb.append('=');
         sb.append(((this.dt == null)?"<null>":this.dt));
@@ -272,6 +342,18 @@ public class Current implements Parcelable
         sb.append("sunset");
         sb.append('=');
         sb.append(((this.sunset == null)?"<null>":this.sunset));
+        sb.append(',');
+        sb.append("moonrise");
+        sb.append('=');
+        sb.append(((this.moonrise == null)?"<null>":this.moonrise));
+        sb.append(',');
+        sb.append("moonset");
+        sb.append('=');
+        sb.append(((this.moonset == null)?"<null>":this.moonset));
+        sb.append(',');
+        sb.append("moonPhase");
+        sb.append('=');
+        sb.append(((this.moonPhase == null)?"<null>":this.moonPhase));
         sb.append(',');
         sb.append("temp");
         sb.append('=');
@@ -293,18 +375,6 @@ public class Current implements Parcelable
         sb.append('=');
         sb.append(((this.dewPoint == null)?"<null>":this.dewPoint));
         sb.append(',');
-        sb.append("uvi");
-        sb.append('=');
-        sb.append(((this.uvi == null)?"<null>":this.uvi));
-        sb.append(',');
-        sb.append("clouds");
-        sb.append('=');
-        sb.append(((this.clouds == null)?"<null>":this.clouds));
-        sb.append(',');
-        sb.append("visibility");
-        sb.append('=');
-        sb.append(((this.visibility == null)?"<null>":this.visibility));
-        sb.append(',');
         sb.append("windSpeed");
         sb.append('=');
         sb.append(((this.windSpeed == null)?"<null>":this.windSpeed));
@@ -321,6 +391,26 @@ public class Current implements Parcelable
         sb.append('=');
         sb.append(((this.weather == null)?"<null>":this.weather));
         sb.append(',');
+        sb.append("clouds");
+        sb.append('=');
+        sb.append(((this.clouds == null)?"<null>":this.clouds));
+        sb.append(',');
+        sb.append("pop");
+        sb.append('=');
+        sb.append(((this.pop == null)?"<null>":this.pop));
+        sb.append(',');
+        sb.append("uvi");
+        sb.append('=');
+        sb.append(((this.uvi == null)?"<null>":this.uvi));
+        sb.append(',');
+        sb.append("rain");
+        sb.append('=');
+        sb.append(((this.rain == null)?"<null>":this.rain));
+        sb.append(',');
+        sb.append("snow");
+        sb.append('=');
+        sb.append(((this.snow == null)?"<null>":this.snow));
+        sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {
@@ -333,18 +423,23 @@ public class Current implements Parcelable
         dest.writeValue(dt);
         dest.writeValue(sunrise);
         dest.writeValue(sunset);
+        dest.writeValue(moonrise);
+        dest.writeValue(moonset);
+        dest.writeValue(moonPhase);
         dest.writeValue(temp);
         dest.writeValue(feelsLike);
         dest.writeValue(pressure);
         dest.writeValue(humidity);
         dest.writeValue(dewPoint);
-        dest.writeValue(uvi);
-        dest.writeValue(clouds);
-        dest.writeValue(visibility);
         dest.writeValue(windSpeed);
         dest.writeValue(windDeg);
         dest.writeValue(windGust);
         dest.writeList(weather);
+        dest.writeValue(clouds);
+        dest.writeValue(pop);
+        dest.writeValue(uvi);
+        dest.writeValue(rain);
+        dest.writeValue(snow);
     }
 
     public int describeContents() {

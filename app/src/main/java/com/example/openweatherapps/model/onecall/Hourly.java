@@ -33,7 +33,7 @@ public class Hourly implements Parcelable
     private Double dewPoint;
     @SerializedName("uvi")
     @Expose
-    private Integer uvi;
+    private Double uvi;
     @SerializedName("clouds")
     @Expose
     private Integer clouds;
@@ -82,7 +82,7 @@ public class Hourly implements Parcelable
         this.pressure = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.humidity = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.dewPoint = ((Double) in.readValue((Double.class.getClassLoader())));
-        this.uvi = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.uvi = ((Double) in.readValue((Double.class.getClassLoader())));
         this.clouds = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.visibility = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.windSpeed = ((Double) in.readValue((Double.class.getClassLoader())));
@@ -118,7 +118,7 @@ public class Hourly implements Parcelable
      * @param humidity
      * @param windSpeed
      */
-    public Hourly(Integer dt, Double temp, Double feelsLike, Integer pressure, Integer humidity, Double dewPoint, Integer uvi, Integer clouds, Integer visibility, Double windSpeed, Integer windDeg, Double windGust, List<Weather__1> weather, Integer pop, Rain rain) {
+    public Hourly(Integer dt, Double temp, Double feelsLike, Integer pressure, Integer humidity, Double dewPoint, Double uvi, Integer clouds, Integer visibility, Double windSpeed, Integer windDeg, Double windGust, List<Weather__1> weather, Integer pop, Rain rain) {
         super();
         this.dt = dt;
         this.temp = temp;
@@ -185,11 +185,11 @@ public class Hourly implements Parcelable
         this.dewPoint = dewPoint;
     }
 
-    public Integer getUvi() {
+    public Double getUvi() {
         return uvi;
     }
 
-    public void setUvi(Integer uvi) {
+    public void setUvi(Double uvi) {
         this.uvi = uvi;
     }
 

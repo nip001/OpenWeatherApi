@@ -12,17 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.openweatherapps.R;
-import com.example.openweatherapps.model.onecall.Hourly;
-
-import java.util.List;
+import com.example.openweatherapps.model.onecall.OneCall;
 
 public class OneCallAdapter extends RecyclerView.Adapter<OneCallAdapter.OneCallViewHolder>{
     private Context context;
-    private List<Hourly> hourly;
+    private OneCall onecall;
 
-    public OneCallAdapter(Context context, List<Hourly>  hourly) {
+    public OneCallAdapter(Context context, OneCall  onecall) {
         this.context = context;
-        this.hourly = hourly;
+        this.onecall = onecall;
     }
 
     @NonNull
@@ -37,19 +35,19 @@ public class OneCallAdapter extends RecyclerView.Adapter<OneCallAdapter.OneCallV
     @Override
     public void onBindViewHolder(@NonNull OneCallViewHolder holder, int position) {
 
-        holder.txtDescription.setText(hourly.get(position).getWeather().get(0).getDescription());
-        holder.txtMain.setText(hourly.get(position).getWeather().get(0).getMain());
-        holder.txtTemp.setText(String.valueOf(hourly.get(position).getTemp()));
-        holder.txtHumidity.setText(String.valueOf(hourly.get(position).getHumidity()));
+        holder.txtDescription.setText(onecall.getCurrent().getWeather().get(0).getDescription());
+        holder.txtMain.setText(onecall.getTimezone());
+        holder.txtTemp.setText(String.valueOf(onecall.getLat()));
+        holder.txtHumidity.setText(String.valueOf(onecall.getLon()));
 
         Glide.with(context).load("http://openweathermap.org/img/wn/"+
-                hourly.get(position).getWeather().get(0).getIcon()+".png")
+                onecall.getCurrent().getWeather().get(0).getIcon()+".png")
                 .into(holder.iconWeather);
     }
 
     @Override
     public int getItemCount() {
-        return hourly.size();
+        return 1;
     }
 
     public class OneCallViewHolder extends RecyclerView.ViewHolder {
